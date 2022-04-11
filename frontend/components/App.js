@@ -23,7 +23,7 @@ export default class App extends React.Component {
     }
   }
 
-  addItem = (e, item) => {
+  addItem = (event, item) => {
     const newItem = {
       name: item,
       id: Date.now(),
