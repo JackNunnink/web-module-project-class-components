@@ -23,10 +23,27 @@ export default class App extends React.Component {
     }
   }
 
+  toggleTodo = todoId => {
+    this.setState({
+      todos: this.state.todos.map(item => {
+        if (todoId === item.id) {
+          return {
+            ...item,
+            completed: !item.completed
+          }
+        }
+        return item;
+      })
+    })
+  }
+
   render() {
     return (
       <div>
-        <TodoList todos={this.state.todos}/>
+        <TodoList
+          toggleTodo={this.toggleTodo} 
+          todos={this.state.todos}
+        />
         <Form />
       </div>
     )
