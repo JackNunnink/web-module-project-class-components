@@ -23,6 +23,18 @@ export default class App extends React.Component {
     }
   }
 
+  addItem = (e, item) => {
+    const newItem = {
+      name: item,
+      id: Date.now(),
+      completed: false
+    }
+
+    this.setState({
+      todos: [ ...this.state.todos, newItem ]
+    })
+  }
+
   toggleTodo = todoId => {
     this.setState({
       todos: this.state.todos.map(item => {
@@ -44,7 +56,9 @@ export default class App extends React.Component {
           toggleTodo={this.toggleTodo} 
           todos={this.state.todos}
         />
-        <Form />
+        <Form 
+          addItem={this.addItem}
+        />
       </div>
     )
   }
